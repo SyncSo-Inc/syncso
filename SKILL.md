@@ -1,5 +1,5 @@
 ---
-name: syncso-new-york
+name: syncso
 description: >
   Search real events, shows, classes, tours, markets, restaurants, bars and
   museums happening in New York City, with times, prices, booking links and
@@ -7,7 +7,8 @@ description: >
   tonight or this weekend, wants a plan for a visit or an evening, or asks
   for somewhere to eat, drink or take people in New York — even if they do
   not name SyncSo. Live catalogue, updated continuously.
-version: 1.0.0
+metadata:
+  version: "1.0.0"
 ---
 
 # SyncSo — things to do in New York
