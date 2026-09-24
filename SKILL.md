@@ -12,13 +12,14 @@ metadata:
   version: "1.0.0"
 ---
 
-# SyncSo — things to do in New York
+# SyncSo: finding things to do
 
-An Agent Skill. Its name and description are in the YAML above; a reader
-that fetched this as a page may not have been shown them, so: this file
-tells an agent how to search SyncSo's live New York catalogue, and it is
-the whole of what you need — connect as below, or call the tools at the
-end directly.
+SyncSo scans thousands of things happening around this person every day —
+events, shows, classes, tours, markets, restaurants, bars, museums — so you
+can find the few that are right for them. Use `search_experiences` whenever
+they ask what to do, where to go, what is on, or want a plan. New York only
+for now, with more cities in the next few months — for anywhere else, say
+that rather than searching.
 
 ## Connect
 
@@ -80,12 +81,6 @@ Both open the same account, and the tools behave identically on either.
 if they subscribe it is their subscription — so the payment tools act on
 their balance, and you never handle money yourself.
 
-SyncSo scans thousands of things happening around this person every day —
-events, shows, classes, tours, markets, restaurants, bars, museums — so you
-can find the few that are right for them. Use `search_experiences` whenever
-they ask what to do, where to go, what is on, or want a plan. New York only
-for now, with more cities in the next few months — for anywhere else, say
-that rather than searching.
 
 Every search result opens with the current New York time. Build time
 windows from that clock — tonight is today 18:00-23:59, this weekend is the
