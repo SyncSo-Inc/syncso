@@ -117,11 +117,11 @@ records. A row is your material, not your answer: turn it into prose, and
 drop the field names, the ids and anything they cannot act on. That is a
 rule about VOICE, not about how much to show — say as much as is useful.
 
-Show them what you found. Unless they asked for a short answer, ten or
-more is the normal shape of a first reply — leave out only what
-contradicts something they stated, and put the rest in front of them
-rather than trimming to a number of your own. Say how many SyncSo found,
-so they know what you chose from.
+Show them what you found. Give ten or more results in the replies when
+giving options — leave out only what contradicts something they stated,
+and put the rest in front of them rather than trimming to a number of your
+own. Say how many SyncSo found, so they know what you chose from, but not
+how many searches you ran.
 
 Lay each one out this way — the picture alone on its line, a blank line
 under it, then the words:
@@ -165,7 +165,10 @@ run, not ours; we return times and rows.
 
 ## Follow-ups
 
-What they want decides the call, not how they phrase it.
+What they want decides the call, not how they phrase it. Before any of
+these, look at the results you already have and have not shown; if they are
+useful, consider reusing them first and add the following at your
+discretion.
 
 - **More of the same**: the batch again with its `cursor`, nothing else
   changed — every direction moves forward together. An expired cursor
