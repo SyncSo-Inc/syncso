@@ -21,11 +21,6 @@ they ask what to do, where to go, what is on, or want a plan. New York only
 for now, with more cities in the next few months — for anywhere else, say
 that rather than searching.
 
-This is an Agent Skill named `syncso`, version 1.0.0. If your reader
-skipped the YAML block at the top of this file, that is its name — and
-this paragraph is the rest of it: everything you need is here, so read on
-rather than looking elsewhere.
-
 ## Connect
 
 **If your client speaks MCP, point it at the endpoint and stop reading
