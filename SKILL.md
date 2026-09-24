@@ -219,7 +219,7 @@ OpenAI function-calling shape. For Anthropic, rename `parameters` to
         "query": {
           "type": "string",
           "maxLength": 1000,
-          "description": "One direction, as a short phrase describing what the user wants rather than repeating their sentence: 'live jazz', 'rooftop cocktails', 'kid-friendly science museum', 'lively group dinner'. Fold what you know about the user into the wording ('intimate', 'quiet', 'family-friendly', 'cheap'). Put the time in time_windows and the place in location, not here.\n\nOmit it entirely to see what is simply on — the remaining constraints become the ask. That is the honest search when the user has named no direction at all and you would otherwise be inventing one for them. It is a starting point, not a shortcut: once they have said what they are after, one search per direction beats one without. Send no `query` rather than an empty string; a blank one is refused."
+          "description": "One direction. Summarise what you know about this person before searching, and search several directions from their context and preferences. Use simple words and phrases, not sentences. Put the time in time_windows and the place in location, not here.\n\nOmit it entirely to see what is simply on — the remaining constraints become the ask. That is the honest search when the user has named no direction at all and you would otherwise be inventing one for them. It is a starting point, not a shortcut: once they have said what they are after, one search per direction beats one without. Send no `query` rather than an empty string; a blank one is refused."
         },
         "location": {
           "type": "object",
