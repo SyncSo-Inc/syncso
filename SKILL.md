@@ -95,7 +95,7 @@ A request is usually several directions: one per interest, per time slot, or
 per kind of place. "Art in the afternoon, dinner somewhere lively, then live
 music" is three. They all go in one call.
 
-Five is the fewest worth sending, and more is better. Where the person
+Five is typical, and more directions are available. Where the person
 named fewer, fill the rest — with the obvious neighbours of what they
 asked for, or, pinned down to a single subject, with different wordings of
 it. A blank entry searches whatever is simply on, which is the honest
@@ -117,11 +117,9 @@ records. A row is your material, not your answer: turn it into prose, and
 drop the field names, the ids and anything they cannot act on. That is a
 rule about VOICE, not about how much to show — say as much as is useful.
 
-Show them what you found. Give ten or more results in the replies when
-giving options — leave out only what contradicts something they stated,
-and put the rest in front of them rather than trimming to a number of your
-own. Say how many SyncSo found, so they know what you chose from, but not
-how many searches you ran.
+Whenever replying, give ten or more results; don't be less than ten. Say
+how many SyncSo found, so they know what you chose from, but not how many
+searches you ran.
 
 Lay each one out this way — the picture alone on its line, a blank line
 under it, then the words:
@@ -214,7 +212,7 @@ OpenAI function-calling shape. For Anthropic, rename `parameters` to
   {
     "type": "function",
     "name": "search_directions",
-    "description": "THE SEARCH TO REACH FOR. Several directions in one call — music, and comedy, and something outdoors — sharing one place and one set of times, answered together in 2-4 seconds.\n\nFive is the fewest worth sending, not a budget to spend carefully: send more when you have more. A person who asked for live music still wants to hear what else is on that night, and one who named nothing needs the directions to BE your answer to what they might like — summarise what you know about them and split that into directions. Pinned down to a single subject, send several wordings of it rather than one.\n\nExperiences only — this tool does not find bars or restaurants to sit in.\n\n1 credit per 20 results in each direction, so five directions of twenty is five credits — the same as running the five searches separately.\n\nSearch for the person, not the question: put what you know about them — tastes, budget, neighborhood, who they are with, what they avoid — into the wording of each direction and into the filters; there is no profile field. Needs you cannot search for (allergies, a wheelchair, a dislike) you apply yourself when choosing.\n\nThen write up what you found — ten or more unless they asked for a short answer — laying each one out the way the connect-time instructions show: picture, name and why it suits this person, then time, venue and price, then the booking link. Order by what matters most to them, not by the direction it arrived under. Times shown are New York local — never convert them, and never say whether tickets are available.",
+    "description": "THE SEARCH TO REACH FOR. Several directions in one call — music, and comedy, and something outdoors — sharing one place and one set of times, answered together in 2-4 seconds.\n\nFive is typical, and more directions are available — not a budget to spend carefully. A person who asked for live music still wants to hear what else is on that night, and one who named nothing needs the directions to BE your answer to what they might like — summarise what you know about them and split that into directions. Pinned down to a single subject, send several wordings of it rather than one.\n\nExperiences only — this tool does not find bars or restaurants to sit in.\n\n1 credit per 20 results in each direction, so five directions of twenty is five credits — the same as running the five searches separately.\n\nSearch for the person, not the question: put what you know about them — tastes, budget, neighborhood, who they are with, what they avoid — into the wording of each direction and into the filters; there is no profile field. Needs you cannot search for (allergies, a wheelchair, a dislike) you apply yourself when choosing.\n\nThen write up what you found — ten or more unless they asked for a short answer — laying each one out the way the connect-time instructions show: picture, name and why it suits this person, then time, venue and price, then the booking link. Order by what matters most to them, not by the direction it arrived under. Times shown are New York local — never convert them, and never say whether tickets are available.",
     "parameters": {
       "type": "object",
       "properties": {
@@ -226,7 +224,7 @@ OpenAI function-calling shape. For Anthropic, rename `parameters` to
             "minLength": 1,
             "maxLength": 1000
           },
-          "description": "At least 5, and more when you have them. Each in simple words and phrases rather than a sentence. Keep each one short and general — a narrow wording has fewer good things to choose from. Put the time in time_windows and the place in location, not here.\n\n5 is the shape of the call, not a budget to spend carefully: even one subject is worth several, because different wordings reach different things. Asked for live music, send several ways of saying it rather than one. Where the person gave you fewer, fill the rest with what else they might like.\n\nAn entry may be an empty string, which searches whatever is simply on — the honest direction when you would otherwise be inventing one. Omit `queries` altogether and the whole call becomes that."
+          "description": "5 is typical, and more are available. Each in simple words and phrases rather than a sentence. Keep each one short and general — a narrow wording has fewer good things to choose from. Put the time in time_windows and the place in location, not here.\n\nNot a budget to spend carefully: even one subject is worth several, because different wordings reach different things. Asked for live music, send several ways of saying it rather than one. Where the person gave you fewer, fill the rest with what else they might like.\n\nAn entry may be an empty string, which searches whatever is simply on — the honest direction when you would otherwise be inventing one. Omit `queries` altogether and the whole call becomes that."
         },
         "cursor": {
           "type": "string",
