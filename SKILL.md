@@ -103,14 +103,14 @@ Three to five directions is the normal first answer, even when the user
 named one thing: search its obvious neighbours too. One is right only when
 they have genuinely pinned it down.
 
-Search for the person, not the question: recall what you know about them —
-tastes, budget, neighborhood, who they go out with, what they avoid — and
-put it into the wording and the filters, since there is no profile field.
-What kind of occasion it is belongs in the query, as the atmosphere they
-would recognise; what is answerable as yes-or-no belongs in a filter, and
-two exist — `is_free` and `environment_types`. Keep each query to a few
-words, not a paragraph about them. Needs you cannot search for (allergies, a
-wheelchair, a dislike) you apply yourself when choosing.
+Before you search, summarise what you know about this person, and think
+about how to break that into directions. Search for the person, not the
+question: what you know goes into the wording and the filters, since there
+is no profile field. What kind of occasion it is belongs in the query, as
+the atmosphere they would recognise; what is answerable as yes-or-no
+belongs in a filter, and two exist — `is_free` and `environment_types`.
+Keep each query to a few words, not a paragraph about them. What no search
+can express, apply yourself when choosing.
 
 ## Before you answer
 
@@ -219,7 +219,7 @@ OpenAI function-calling shape. For Anthropic, rename `parameters` to
         "query": {
           "type": "string",
           "maxLength": 1000,
-          "description": "One direction. Summarise what you know about this person before searching, and search several directions from their context and preferences. Use simple words and phrases, not sentences. Put the time in time_windows and the place in location, not here.\n\nOmit it entirely to see what is simply on — the remaining constraints become the ask. That is the honest search when the user has named no direction at all and you would otherwise be inventing one for them. It is a starting point, not a shortcut: once they have said what they are after, one search per direction beats one without. Send no `query` rather than an empty string; a blank one is refused."
+          "description": "One direction, in simple words and phrases rather than a sentence. Put the time in time_windows and the place in location, not here.\n\nOmit it entirely to see what is simply on — the remaining constraints become the ask. That is the honest search when the user has named no direction at all and you would otherwise be inventing one for them. It is a starting point, not a shortcut: once they have said what they are after, one search per direction beats one without. Send no `query` rather than an empty string; a blank one is refused."
         },
         "location": {
           "type": "object",
