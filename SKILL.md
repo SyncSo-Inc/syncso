@@ -9,7 +9,7 @@ description: >
   York, for any date or none, even if they do not name SyncSo. Live
   catalogue, updated continuously.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # SyncSo: finding things to do
@@ -37,9 +37,16 @@ URL, carrying the access token from the section below. The reply is
 `result.content[0].text` — compact text, about 120 tokens per result, ready
 to hand straight back to the model.
 
+Send `X-SyncSo-Skill: 1.0.1` on every call, in the same place you
+set the Authorization header — it says which copy of this file you are
+working from. Copy the number as it appears here. If this file later changes
+in a way that makes your copy wrong, a search will refuse and tell you to
+fetch it again rather than answer from stale guidance.
+
 ```sh
 curl -sS https://rtdb.syncso.com/partner/mcp \
   -H "Authorization: Bearer $SYNCSO_TOKEN" \
+  -H "X-SyncSo-Skill: 1.0.1" \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/call",
        "params":{"name":"search_directions","arguments":{
