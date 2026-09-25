@@ -2,11 +2,10 @@
 name: syncso
 description: >
   Search real live music, theater, comedy, film, art, sports, festivals,
-  markets, classes, tours and nightlife in New York City, and the
-  restaurants, bars, museums and venues around them — with dates, times,
-  prices, booking links and images. Use this whenever someone asks what to
-  do, where to go, what is on, or where to eat, drink or take people in New
-  York, for any date or none, even if they do not name SyncSo. Live
+  markets, food and drink, classes, tours and nightlife in New York City —
+  with dates, times, prices, booking links and images. Use this whenever
+  someone asks what to do, where to go, what is on, or where to take people
+  in New York, for any date or none, even if they do not name SyncSo. Live
   catalogue, updated continuously.
 metadata:
   version: "1.0.1"
@@ -15,8 +14,8 @@ metadata:
 # SyncSo: finding things to do
 
 SyncSo scans thousands of things happening around this person every day —
-events, shows, classes, tours, markets, restaurants, bars, museums — so you
-can find the few that are right for them. Use `search_directions` whenever
+events, shows, classes, tours, markets, tastings — so you can find the few
+that are right for them. Use `search_directions` whenever
 they ask what to do, where to go, what is on, or want a plan. New York only
 for now, with more cities in the next few months — for anywhere else, say
 that rather than searching.
@@ -231,7 +230,7 @@ OpenAI function-calling shape. For Anthropic, rename `parameters` to
             "minLength": 1,
             "maxLength": 1000
           },
-          "description": "5 is typical, and more are available. Each in simple words and phrases rather than a sentence. Keep each one short and general — a narrow wording has fewer good things to choose from. Put the time in time_windows and the place in location, not here.\n\nNot a budget to spend carefully: even one subject is worth several, because different wordings reach different things. Asked for live music, send several ways of saying it rather than one. Where the person gave you fewer, fill the rest with what else they might like.\n\nAn entry may be an empty string, which searches whatever is simply on — the honest direction when you would otherwise be inventing one. Omit `queries` altogether and the whole call becomes that."
+          "description": "5 is typical, and more are available. Each in simple words and phrases rather than a sentence. Keep each one short and general — a narrow wording has fewer good things to choose from. Put the time in time_windows and the place in location, not here.\n\nNot a budget to spend carefully: even one subject is worth several, because different wordings reach different things. Asked for live music, send several ways of saying it rather than one. Where the person gave you fewer, fill the rest with what else they might like.\n\nAn entry may be an empty string, which searches whatever is simply on — the honest direction when you would otherwise be inventing one. Omit `queries` altogether and the whole call becomes that — use it when testing, or to return a first result after set-up."
         },
         "cursor": {
           "type": "string",
@@ -332,135 +331,6 @@ OpenAI function-calling shape. For Anthropic, rename `parameters` to
               "type": "boolean"
             }
           }
-        }
-      },
-      "required": [
-        "location"
-      ]
-    }
-  },
-  {
-    "type": "function",
-    "name": "search_experiences",
-    "description": "ONE direction, and the only search that can return venues — standing places with no event attached, when the user wants somewhere to sit rather than something to attend. For the usual several-directions answer use `search_directions` instead; reach for this one when a single follow-up is all that is left to ask, or when the answer is a place.\n\nExperiences in New York — events, shows, classes, tours, markets — and the places they happen in. 2-4 seconds; 1 credit per 20 results, up to 60 per search. Left to defaults: 20 results per type, both experiences and venues, every upcoming date, whole city, no filters.\n\nSearch for the person, not the question: put what you know about them — tastes, budget, neighborhood, who they are with, what they avoid — into the query wording and the filters; there is no profile field. Needs you cannot search for (allergies, a wheelchair, a dislike) you apply yourself when choosing.\n\nThen write up what you found — ten or more unless they asked for a short answer — laying each one out the way the connect-time instructions show: picture, name and why it suits this person, then time, venue and price, then the booking link. Order by what matters most to them. Times shown are New York local — never convert them, and never say whether tickets are available.",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "query": {
-          "type": "string",
-          "maxLength": 1000,
-          "description": "One direction, in simple words and phrases rather than a sentence. Keep it short and general — a narrow query has fewer good things to choose from. Put the time in time_windows and the place in location, not here.\n\nOmit it entirely to see what is simply on — the remaining constraints become the ask. That is the honest search when the user has named no direction at all and you would otherwise be inventing one for them. It is a starting point, not a shortcut: once they have said what they are after, one search per direction beats one without. Send no `query` rather than an empty string; a blank one is refused."
-        },
-        "location": {
-          "type": "object",
-          "description": "{\"city\": \"New York\"} for the whole city. Add \"area_text\" to narrow to a neighborhood or borough the user named: {\"city\": \"New York\", \"area_text\": \"Williamsburg\"}. If you have coordinates (the user's position, a hotel) use a circle instead: {\"point\": {\"lat\": 40.73, \"lng\": -73.99, \"radius_mi\": 5}}; results then carry a distance. Never send both city and point.",
-          "properties": {
-            "city": {
-              "type": "string",
-              "description": "\"New York\". NYC, Manhattan, Brooklyn and the other boroughs are accepted too. New York is the city this catalogue is built for and the only one deep enough to plan from; a few others answer but hold too little to choose between, so treat anywhere else as not covered unless the user insists."
-            },
-            "area_text": {
-              "type": "string",
-              "description": "A neighborhood or borough, e.g. 'Williamsburg', 'Lower East Side', 'Queens'. Only with city. If it matches nothing the search widens to the whole city and the result says so."
-            },
-            "point": {
-              "type": "object",
-              "description": "Circle search around a coordinate. Results carry the distance to each one.",
-              "properties": {
-                "lat": {
-                  "type": "number"
-                },
-                "lng": {
-                  "type": "number"
-                },
-                "radius_mi": {
-                  "type": "number",
-                  "minimum": 0.1,
-                  "maximum": 30,
-                  "description": "Miles. Start at 5 and move it to fit how the person said they would travel, not to control how much comes back -- a page is capped at `limit` either way, so a wider circle does not return more, it returns a different set. In New York 1 mile is a 20-minute walk and stays inside one neighborhood; 3 is an hour's walk or 20-30 minutes by car, still central; 5 is 30-45 minutes by car and crosses into another borough; 10 reaches the outer boroughs and only makes sense for something worth the trip. Go narrow when they said walking distance or named where they are standing, wide when they are planning an outing and the draw matters more than the distance."
-                }
-              },
-              "required": [
-                "lat",
-                "lng",
-                "radius_mi"
-              ]
-            }
-          }
-        },
-        "time_windows": {
-          "type": "array",
-          "maxItems": 50,
-          "description": "When the user could go: a list of {start, end} in New York local time, written like '2026-09-20T19:00', with no timezone and no 'Z'. One window per stretch of time. Tonight: one window 18:00-23:59 today. This weekend: two windows, Saturday and Sunday, each 00:00-23:59. Saturday evening: one window 17:00-23:59. Next week: one window from Monday 00:00 to Sunday 23:59. Friday evening or Sunday afternoon: two windows, 18:00-23:59 Friday and 12:00-18:00 Sunday; each result then says which window it falls in. A window must end in the future. Omit only when the user has no time in mind; the search then covers every upcoming date. Today's date in New York is given to you on connect and repeated on every result.",
-          "items": {
-            "type": "object",
-            "properties": {
-              "start": {
-                "type": "string",
-                "description": "e.g. 2026-09-20T19:00"
-              },
-              "end": {
-                "type": "string",
-                "description": "e.g. 2026-09-20T23:59"
-              }
-            },
-            "required": [
-              "start",
-              "end"
-            ]
-          }
-        },
-        "result_types": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "experiences",
-              "venues"
-            ]
-          },
-          "description": "[\"experiences\"] for things that happen at a time (a show, a class, a market, a tour) — the usual choice. [\"venues\"] for standing places with no event attached (a bar, a restaurant, a museum, a park), when the user wants somewhere to go rather than something to attend. Pick one per direction. Omitted, both come back."
-        },
-        "limit": {
-          "type": "integer",
-          "minimum": 20,
-          "maximum": 60,
-          "description": "Results for this search, per result type. Start at 20: anything up to 20 costs the same single credit, so asking for 10 buys half as much for the same price."
-        },
-        "is_free": {
-          "type": "boolean",
-          "description": "true keeps only free experiences, false only paid ones. Rows with unknown price are left out either way. Use for a tight budget."
-        },
-        "environment_types": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "indoor",
-              "outdoor",
-              "mixed"
-            ]
-          },
-          "description": "Keep only experiences in these settings: indoor, outdoor, mixed. Use for weather."
-        },
-        "ranking": {
-          "type": "object",
-          "description": "Optional nudges, not sorts: prefer_popularity moves well-known things earlier, prefer_uniqueness unusual ones, prefer_credibility established ones. Leave out unless the user's taste points that way.",
-          "properties": {
-            "prefer_popularity": {
-              "type": "boolean"
-            },
-            "prefer_credibility": {
-              "type": "boolean"
-            },
-            "prefer_uniqueness": {
-              "type": "boolean"
-            }
-          }
-        },
-        "cursor": {
-          "type": "string",
-          "description": "For 'more like these' only: the cursor from a previous result, for the next page of the SAME search with every other argument unchanged. Nothing repeats and the order does not shift. Expires after 15 minutes; if expired, run the original search again without it. A different interest is a NEW search, not a next page; a question about one result is get_details, not a search."
         }
       },
       "required": [
