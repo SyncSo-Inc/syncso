@@ -15,10 +15,10 @@ metadata:
 
 SyncSo scans thousands of things happening around this person every day —
 events, shows, classes, tours, markets, tastings — so you can find the few
-that are right for them. Use `search_directions` whenever
-they ask what to do, where to go, what is on, or want a plan. New York only
-for now, with more cities in the next few months — for anywhere else, say
-that rather than searching.
+that are right for them. Use `search_directions` whenever they ask what to
+do, where to go, what is on, or want a plan. New York only for now, with
+more cities in the next few months — for anywhere else, say that rather
+than searching.
 
 ## Connect
 
@@ -101,11 +101,12 @@ A request is usually several directions: one per interest, per time slot, or
 per kind of place. "Art in the afternoon, dinner somewhere lively, then live
 music" is three. They all go in one call.
 
-Five is typical, and more directions are available. Where the person
-named fewer, fill the rest — with the obvious neighbours of what they
-asked for, or, pinned down to a single subject, with different wordings of
-it. A blank entry searches whatever is simply on, which is the honest
-direction when you would otherwise be inventing one.
+Three is typical. No specific requirements, search three; specific ones,
+search five and select the best from what comes back. Pinned down to a
+single subject, spend the directions on different wordings of it. A blank
+entry searches whatever is simply on — and sending no `queries` at all
+makes the whole call that, which is the right call when testing and for
+the first result after set-up.
 
 Before you search, summarise what you know about this person, and think
 about how to break that into directions. Search for the person, not the
@@ -123,38 +124,9 @@ records. A row is your material, not your answer: turn it into prose, and
 drop the field names, the ids and anything they cannot act on. That is a
 rule about VOICE, not about how much to show — say as much as is useful.
 
-Whenever replying, give ten or more results; don't be less than ten. Say
-how many SyncSo found, so they know what you chose from, but not how many
-searches you ran.
-
-Lay each one out this way — the picture alone on its line, a blank line
-under it, then the words:
-
-    ![name](the Image: URL)
-
-    **name** — what it is, and why it is right for this person.
-    time · venue (neighbourhood) · price
-    [Book](the Book: URL)
-
-The blank line is load-bearing: run the picture into the text, or put it in
-a bulleted or numbered list, and it stops being a picture.
-
-The search row carries the `Image:` URL; no `Image:` line means no picture,
-and inventing one is worse than leaving it out.
-
-Order by what matters most to this person: whatever they pressed hardest on
-leads. Not the order the searches returned, and not the tidiest itinerary.
-
-Named no direction at all? Send no `queries` and see what is on — a real
-answer rather than a guess, and something concrete to offer a choice from.
-Ask a question only if that comes back thin.
-
-`get_details` is the full record behind a row — its whole schedule rather
-than the next dates, the venue as a place, where else it is listed. 1 credit
-per call, and several ids in one call cost the same as one. Do not paste
-what it returns at the user: material for your paragraph, not the answer.
-
-Keep the `id` of everything you showed.
+Every result set carries the rest — how many to show, how to lay each one
+out, what never to claim — at the top of the rows it governs. Read it
+there.
 
 ## Offer one next step
 
@@ -179,19 +151,14 @@ discretion.
   means running it again without one.
 - **A different direction**: a new search — a cursor only continues the
   batch that made it.
-- **More about a result they can see**: `get_details` with its id. Searching
-  again for it wastes a call and can come back ranked differently.
+- **More about a result they can see**: `get_details` with its id — the
+  whole schedule rather than the next dates, the venue as a place, where
+  else it is listed. Several ids in one call cost the same as one, and
+  searching again instead wastes a call and can come back ranked
+  differently. Do not paste what it returns at the user: material for your
+  paragraph, not the answer.
 
-## What to tell the user
-
-- Times are New York local. Show them as given.
-- Never say tickets are available or sold out. Send the user to the
-  booking link.
-- A `Calendar:` link is the organiser's programme, not the event's own
-  page. Label it [Details] rather than [Book], and say which it is.
-- If a result says the neighborhood matched nothing and the search widened
-  to the whole city, do not describe those results as being in that
-  neighborhood.
+Keep the `id` of everything you showed; these follow-ups need them.
 
 ## Money
 
@@ -218,19 +185,19 @@ OpenAI function-calling shape. For Anthropic, rename `parameters` to
   {
     "type": "function",
     "name": "search_directions",
-    "description": "THE SEARCH TO REACH FOR. Several directions in one call — music, and comedy, and something outdoors — sharing one place and one set of times, answered together in 2-4 seconds.\n\nFive is typical, and more directions are available — not a budget to spend carefully. A person who asked for live music still wants to hear what else is on that night, and one who named nothing needs the directions to BE your answer to what they might like — summarise what you know about them and split that into directions. Pinned down to a single subject, send several wordings of it rather than one.\n\nExperiences only — this tool does not find bars or restaurants to sit in.\n\n1 credit per 20 results in each direction, so five directions of twenty is five credits — the same as running the five searches separately.\n\nSearch for the person, not the question: put what you know about them — tastes, budget, neighborhood, who they are with, what they avoid — into the wording of each direction and into the filters; there is no profile field. Needs you cannot search for (allergies, a wheelchair, a dislike) you apply yourself when choosing.\n\nThen write up what you found — ten or more unless they asked for a short answer — laying each one out the way the connect-time instructions show: picture, name and why it suits this person, then time, venue and price, then the booking link. Order by what matters most to them, not by the direction it arrived under. Times shown are New York local — never convert them, and never say whether tickets are available.",
+    "description": "THE SEARCH TO REACH FOR. Several directions in one call — music, and comedy, and something outdoors — sharing one place and one set of times, answered together in 2-4 seconds.\n\nThree directions is typical; five when the person had specific requirements and you will be selecting from what comes back. A person who asked for live music still wants to hear what else is on that night, and one who named nothing needs the directions to BE your answer to what they might like — summarise what you know about them and split that into directions. Pinned down to a single subject, send several wordings of it rather than one.\n\nExperiences only — this tool does not find bars or restaurants to sit in.\n\n1 credit per 20 results in each direction, so five directions of twenty is five credits — the same as running the five searches separately.\n\nSearch for the person, not the question: put what you know about them — tastes, budget, neighborhood, who they are with, what they avoid — into the wording of each direction and into the filters; there is no profile field. Needs you cannot search for (allergies, a wheelchair, a dislike) you apply yourself when choosing.\n\nThen write up what you found — ten or more unless they asked for a short answer — laying each one out the way the connect-time instructions show: picture, name and why it suits this person, then time, venue and price, then the booking link. Order by what matters most to them, not by the direction it arrived under. Times shown are New York local — never convert them, and never say whether tickets are available.",
     "parameters": {
       "type": "object",
       "properties": {
         "queries": {
           "type": "array",
-          "minItems": 5,
+          "minItems": 3,
           "items": {
             "type": "string",
             "minLength": 1,
             "maxLength": 1000
           },
-          "description": "5 is typical, and more are available. Each in simple words and phrases rather than a sentence. Keep each one short and general — a narrow wording has fewer good things to choose from. Put the time in time_windows and the place in location, not here.\n\nNot a budget to spend carefully: even one subject is worth several, because different wordings reach different things. Asked for live music, send several ways of saying it rather than one. Where the person gave you fewer, fill the rest with what else they might like.\n\nAn entry may be an empty string, which searches whatever is simply on — the honest direction when you would otherwise be inventing one. Omit `queries` altogether and the whole call becomes that — use it when testing, or to return a first result after set-up."
+          "description": "3 is typical, and more or fewer are available. When the user has no specific requirements, search 3; when they do, search 5 and select the best from what comes back.\n\nEach in simple words and phrases rather than a sentence. Keep each one short and general — a narrow wording has fewer good things to choose from. Put the time in time_windows and the place in location, not here. Even one subject is worth several directions, because different wordings reach different things: asked for live music, send several ways of saying it rather than one.\n\nAn entry may be an empty string, which searches whatever is simply on — the honest direction when you would otherwise be inventing one. Omit `queries` altogether and the whole call becomes that: the right call when testing, and for the first result after set-up."
         },
         "cursor": {
           "type": "string",
