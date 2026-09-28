@@ -1,0 +1,17 @@
+{
+  "name": "syncso",
+  "owner": {
+    "name": "SyncSo"
+  },
+  "metadata": {
+    "description": "Search live New York events, shows, classes, tours, markets, restaurants and bars",
+    "version": "1.0.1"
+  },
+  "plugins": [
+    {
+      "name": "syncso",
+      "description": "Find what is actually on in New York — live dates, times, prices, booking links and images",
+      "source": "./"
+    }
+  ]
+}
