@@ -31,11 +31,8 @@ Tell your assistant to set itself up from this file:
 Set up SyncSo from https://syncso.com/SKILL.md
 ```
 
-That is the whole thing. The file carries the guidance, the tool definitions
-and how to get a token, and it is always the current copy. Your assistant reads
-it and wires itself up. Nothing to register, and no key of yours to manage —
-each user signs in once at [syncso.com/connect](https://syncso.com/connect) and
-the calls run on their own allowance.
+The file carries the guidance and the tool definitions, and the copy at that
+URL is always the current one.
 
 Works with anything that can call a tool and make an HTTPS request. A client
 that speaks MCP can skip the file and connect straight to
@@ -58,25 +55,18 @@ one-night thing in a room above a bar. Ask about anywhere else and the skill
 tells your model to say so rather than invent an answer — the same refusal to
 guess that makes the New York answers worth trusting.
 
-## About this file
-
-Nobody writes [`syncso/SKILL.md`](syncso/SKILL.md) by hand. It is generated
-from the server's own instructions and tool definitions, and published here and
-to [syncso.com/SKILL.md](https://syncso.com/SKILL.md) in the same step — so
-what you read is what the server is still saying, not what it said in March.
-
 ## Links
 
 - [syncso.com](https://syncso.com) — what SyncSo is
 - [syncso.com/connect](https://syncso.com/connect) — where your user gets their code
-- [syncso.com/SKILL.md](https://syncso.com/SKILL.md) — this skill, always current
+- [syncso.com/SKILL.md](https://syncso.com/SKILL.md) — the skill itself, always the current copy ([also in this repo](syncso/SKILL.md))
 
 ## Questions
 
 Something missing, wrong, or not working the way this page says? Open an
 [issue](https://github.com/SyncSo-Inc/syncso/issues), or email
-[hello@syncso.com](mailto:hello@syncso.com). Tell us if a city you need is not
-here yet — that is useful to know.
+[hello@syncso.com](mailto:hello@syncso.com). And if there is a city you want
+open, tell us.
 
 ## License
 
