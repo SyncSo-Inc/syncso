@@ -2,6 +2,8 @@
 
 **Let your agents understand what's happening locally, in real time.**
 
+[![SyncSo's live database of New York experiences](.github/assets/syncso-demo.gif)](https://rtdb.syncso.com/database)
+
 Ask a model what to do in New York and it names the Whitney. It is not wrong.
 It is just answering from a guidebook, because that is what it has — a city as
 a list of places, frozen whenever the training run ended.
@@ -38,6 +40,12 @@ the calls run on their own allowance.
 Works with anything that can call a tool and make an HTTPS request. A client
 that speaks MCP can skip the file and connect straight to
 `https://rtdb.syncso.com/partner/mcp` instead.
+
+To keep a copy on disk rather than fetch it each time:
+
+```bash
+npx skills add SyncSo-Inc/syncso
+```
 
 Two tools, `search_directions` and `get_details`. That is the whole surface.
 
