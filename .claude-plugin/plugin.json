@@ -1,0 +1,15 @@
+{
+  "name": "syncso",
+  "version": "1.0.1",
+  "description": "Let your agents understand what's happening locally, in real time",
+  "author": {
+    "name": "SyncSo",
+    "email": "hello@syncso.com",
+    "url": "https://syncso.com"
+  },
+  "homepage": "https://syncso.com",
+  "repository": "https://github.com/SyncSo-Inc/syncso",
+  "license": "MIT",
+  "keywords": ["events", "experiences", "local", "new-york", "things-to-do", "nightlife", "concerts", "mcp"],
+  "skills": "./syncso"
+}
