@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.syncso/syncso",
+  "title": "SyncSo",
+  "description": "Live New York events, shows, classes and tours, with times, prices, booking links and photos.",
+  "version": "1.0.1",
+  "websiteUrl": "https://syncso.com",
+  "repository": {
+    "url": "https://github.com/SyncSo-Inc/syncso",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://rtdb.syncso.com/partner/mcp"
+    }
+  ]
+}
