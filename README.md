@@ -25,26 +25,81 @@ Real answers, with a link to book them.
 
 ## Install
 
-Tell your assistant to set itself up from this file:
+One catalogue, two doors. Assistants that speak MCP connect to
+`https://rtdb.syncso.com/partner/mcp`. Anything else reads the skill file at
+`https://syncso.com/SKILL.md`. Both open the same account: the first search
+asks the person to sign in once at syncso.com, and every account starts with
+a free monthly allowance of searches.
 
+### Claude
+
+In Claude.ai or the Claude desktop app: **Settings → Connectors → Add custom
+connector**, paste the MCP URL, and ask. Claude also lists SyncSo in its
+directory, where it is one click.
+
+In Claude Code, connect the MCP server:
+
+```bash
+claude mcp add --transport http syncso https://rtdb.syncso.com/partner/mcp
 ```
-Set up SyncSo from https://syncso.com/SKILL.md
+
+or install the skill as a plugin, which keeps itself current:
+
+```bash
+claude plugin marketplace add SyncSo-Inc/syncso
+claude plugin install syncso@syncso
 ```
 
-The file carries the guidance and the tool definitions, and the copy at that
-URL is always the current one.
+### ChatGPT
 
-Works with anything that can call a tool and make an HTTPS request. A client
-that speaks MCP can skip the file and connect straight to
-`https://rtdb.syncso.com/partner/mcp` instead.
+Coming to the ChatGPT app directory. Until it is listed: **Settings → Apps &
+Connectors → Advanced → Developer mode**, add a connector, paste the MCP URL.
+Developer mode is not available on every plan.
 
-To keep a copy on disk rather than fetch it each time:
+### Cursor, Windsurf, VS Code and other MCP clients
+
+Add SyncSo to the client's MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "syncso": { "url": "https://rtdb.syncso.com/partner/mcp" }
+  }
+}
+```
+
+### OpenClaw
+
+```bash
+openclaw skills install @liangstl/syncso
+```
+
+Also on [ClawHub](https://clawhub.ai/LiangSTL/skills/syncso), where
+`clawhub install syncso` does the same.
+
+### Coding agents that read skill folders
+
+Claude Code, Codex, Cursor, Copilot and the rest, one command:
 
 ```bash
 npx skills add SyncSo-Inc/syncso
 ```
 
-Two tools, `search_directions` and `get_details`. That is the whole surface.
+### Anything else
+
+Tell your assistant:
+
+```
+Set up SyncSo from https://syncso.com/SKILL.md
+```
+
+The file carries the guidance and the tool definitions, works with anything
+that can call a tool and make an HTTPS request, and the copy at that URL is
+always the current one. A person using it gets their sign-in code at
+[syncso.com/connect](https://syncso.com/connect).
+
+Two tools do the work, `search_directions` and `get_details`. That is the
+whole surface.
 
 ## Coverage
 
