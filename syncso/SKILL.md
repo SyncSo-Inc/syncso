@@ -185,8 +185,8 @@ discretion.
 **Never ask for card details yourself, and never put them in a message.**
 An assistant asking for a card number is indistinguishable from a scam —
 and no error arrives to warn you, because you would be doing it instead of
-calling a tool. `get_payment_link` and `get_billing_link` describe
-themselves, and the failure that needs one names it.
+calling a tool. `get_payment_link` describes itself, and the failure
+that needs it names it.
 
 ## When a search is empty or fails
 
