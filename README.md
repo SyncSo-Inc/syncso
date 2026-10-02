@@ -98,7 +98,7 @@ that can call a tool and make an HTTPS request, and the copy at that URL is
 always the current one. A person using it gets their sign-in code at
 [syncso.com/connect](https://syncso.com/connect).
 
-Two tools do the work, `search_directions` and `get_details`. That is the
+Two tools do the work, `find_things_to_do` and `get_details`. That is the
 whole surface.
 
 ## Coverage
