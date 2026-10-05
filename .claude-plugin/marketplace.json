@@ -4,13 +4,13 @@
     "name": "SyncSo"
   },
   "metadata": {
-    "description": "Search live New York events, shows, classes, tours, markets, restaurants and bars",
-    "version": "1.0.1"
+    "description": "Live New York events, shows, classes, tours, markets, music, theater, comedy, film, art, sports and nightlife — with dates, times, prices, booking links and images.",
+    "version": "2.0.0"
   },
   "plugins": [
     {
       "name": "syncso",
-      "description": "Find what is actually on in New York — live dates, times, prices, booking links and images",
+      "description": "Live New York events, shows, classes, tours, markets, music, theater, comedy, film, art, sports and nightlife — with dates, times, prices, booking links and images.",
       "source": "./"
     }
   ]
