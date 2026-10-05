@@ -1,7 +1,7 @@
 {
   "name": "syncso",
-  "version": "1.0.1",
-  "description": "Let your agents understand what's happening locally, in real time",
+  "version": "2.0.0",
+  "description": "Live New York events, shows, classes, tours, markets, music, theater, comedy, film, art, sports and nightlife — with dates, times, prices, booking links and images.",
   "author": {
     "name": "SyncSo",
     "email": "hello@syncso.com",
