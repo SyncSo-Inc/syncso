@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.syncso/syncso",
   "title": "SyncSo",
-  "description": "Live New York events, shows, classes, tours, markets, music, theater, comedy, film, art, sports and nightlife — with dates, times, prices, booking links and images.",
+  "description": "Live New York events, shows, classes, tours, markets, music, theater, comedy, art and nightlife",
   "version": "2.0.0",
   "websiteUrl": "https://syncso.com",
   "repository": {
