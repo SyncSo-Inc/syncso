@@ -135,7 +135,8 @@ and they are where the best answers come from.
 
 An answer costs 5-10 credits for the first 50 results and 3 for each
 further 50, on the work it actually did. `limit` is the lever: a sentence
-is written for every row returned, so ask for what you will show.
+is written for every row returned, so ask for what you will show. Left
+out, it is 20.
 
 ## Showing the answer
 
@@ -147,7 +148,7 @@ Each row arrives finished, laid out as the card to show:
     time · venue · price
     [Book](the booking link)
 
-Pass them on in that shape and that order, ten or more of them.
+Pass them on in that shape and that order, all of them, top to bottom.
 
 The sentence is already written for this request — use it, as it is
 written. Rewriting it costs the reader the reasoning and gains nothing, and
@@ -210,7 +211,7 @@ or it will be rejected. For Anthropic, rename `parameters` to
   {
     "type": "function",
     "name": "find_things_to_do",
-    "description": "The tool to reach for whenever someone asks what to do, where to go, what is on, or wants a day or an evening planned.\n\nSend what they said, in their words, and with it whatever you know about this person — who they are, and their preferences: what they have liked, disliked or already done. Not only tonight's constraints. One call. We read everything on in that window and that area — a thousand rows and more — and return the ones that fit, in order, each with a sentence saying why it is there.\n\nDO NOT split the request into searches, and do not re-rank or filter what comes back. The ordering is the answer: it was made by reading every candidate against this person's actual request, which is work no selection from a results list can redo. Show them in the order given.\n\nKeyword searches miss the local life — a Go night at a cafe, a running club, an origami meetup, a free park tour — because\nnone of it describes itself in the words anyone would search for. Reading every row is how those are found.\n\nNew York only for now.\n\n15-25 seconds. Priced per call on the work it did: 5-10 credits for the first 50 results and 3 for each further 50, so `limit` is what moves it.",
+    "description": "The tool to reach for whenever someone asks what to do, where to go, what is on, or wants a day or an evening planned.\n\nSend what they said, in their words, and with it whatever you know about this person — who they are, and their preferences: what they have liked, disliked or already done. Not only tonight's constraints. One call. We read everything on in that window and that area — a thousand rows and more — and return the ones that fit, in order, each with a sentence saying why it is there.\n\nDO NOT split the request into searches, and do not re-rank or filter what comes back. The ordering is the answer: it was made by reading every candidate against this person's actual request, which is work no selection from a results list can redo. Show them in the order given.\n\nKeyword searches miss the local life — a Go night at a cafe, a running club, an origami meetup, a free park tour — because\nnone of it describes itself in the words anyone would search for. Reading every row is how those are found.\n\nNew York only for now.\n\n11-16 seconds for a screenful. Priced per call on the work it did: 5-10 credits for the first 50 results and 3 for each further 50, so `limit` is what moves both the clock and the price.",
     "parameters": {
       "type": "object",
       "properties": {
@@ -260,7 +261,7 @@ or it will be rejected. For Anthropic, rename `parameters` to
           "type": "integer",
           "minimum": 1,
           "maximum": 400,
-          "description": "How many to return. Defaults to a screenful. Ask for what you will actually show — a sentence is written for every row returned, and the price follows that."
+          "description": "How many to return. Defaults to 20, in order; show them in that order. Ask for what you will actually show — a sentence is written for every row returned, and the price follows that."
         },
         "cursor": {
           "type": "string",
