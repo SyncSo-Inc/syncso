@@ -1,12 +1,16 @@
 ---
 name: syncso
 description: >
-  Search real live music, theater, comedy, film, art, sports, festivals,
-  markets, food and drink, classes, tours and nightlife in New York City —
-  with dates, times, prices, booking links and images. Use this whenever
-  someone asks what to do, where to go, what is on, or where to take people
-  in New York, for any date or none, even if they do not name SyncSo. Live
-  catalogue, updated continuously.
+  Search real live music, theater, dance, comedy, film, art, sports,
+  festivals, markets, food and drink, nightlife, classes, talks and
+  lectures, books and literary events, tours, outdoors and nature
+  programs, family and kids activities, social and dating nights,
+  networking and business events, wellness classes, religion and
+  spirituality services, civic meetings, charity and volunteering in New
+  York City — with dates, times, prices, booking links and images. Use
+  this whenever someone asks what to do, where to go, what is on, or where
+  to take people in New York, for any date or none, even if they do not
+  name SyncSo. Live catalogue, updated continuously.
 metadata:
   version: "2.0.0"
 ---
@@ -149,7 +153,7 @@ Each row arrives finished, laid out as the card to show:
     ![name](the picture)
 
     **name** — why it suits this person
-    time · venue · price
+    time · location · price
     [Book](the booking link)
 
 Pass them on in that shape and that order, all of them, top to bottom.
