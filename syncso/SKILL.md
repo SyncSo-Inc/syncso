@@ -148,8 +148,8 @@ allergy, a dislike, "my parents are in their seventies and can't be on
 their feet long" — these are read and reasoned about, not matched as text,
 and they are where the best answers come from.
 
-An answer costs 4-7 credits for the first 50 results with reasons
-(8-12 seconds) and 2-4 without (3-6 seconds), and 2 for each further 50,
+An answer costs 3-6 credits for the first 50 results with reasons
+(8-12 seconds) and 2-3 without (3-6 seconds), and 2 for each further 50,
 on the work it actually did.
 
 Leave `limit` out: it is 20, and that is almost always the right ask. A
@@ -215,7 +215,8 @@ the user what you asked for. An answer that says a place is outside the
 area we cover is neither empty nor a failure: we cover New York and San Francisco only
 for now, and nothing was searched. Say that in a sentence, and do not
 search one of those in its place unless they ask for it. An answer that asks
-which city is a question for the user: ask it, then call again.
+which city, or which of two places you sent, is a question for the user: ask
+it, then call again with one place. Send `lat`/`lng` only for "near me".
 
 On `rate_limited`, wait the seconds given and retry. On
 `insufficient_credits` or `quota_exceeded`, stop and tell the user.
@@ -233,7 +234,7 @@ or it will be rejected. For Anthropic, rename `parameters` to
   {
     "type": "function",
     "name": "find_things_to_do",
-    "description": "The tool to reach for whenever someone asks what to do, where to go, what is on, or wants a day or an evening planned.\n\nSend what they said, in their words, and with it what you know about this person that would change the answer — who they are, what they have liked, disliked or already done — chosen for this ask, not attached as a profile: a detail that does not bear on it pulls the answer toward itself. One call. We read everything on in that window and that area — a thousand rows and more — and return the ones that fit, in order, each with a sentence saying why it is there.\n\nDO NOT split the request into searches, and do not re-rank or filter what comes back. The ordering is the answer: it was made by reading every candidate against this person's actual request, which is work no selection from a results list can redo. Show them in the order given.\n\nKeyword searches miss the local life — a Go night at a cafe, a running club, an origami meetup, a free park tour — because\nnone of it describes itself in the words anyone would search for. Reading every row is how those are found.\n\nNew York and the San Francisco Bay Area only for now. If they have not said which city, ask them first; an ask with no place is answered with that question.\n\nWith reasons: 4-7 credits per ask, 8-12 seconds for a screenful (the first 50 results). Without reasons: 2-4 credits per ask, 3-6 seconds. Priced per call on the work it did, and 2 for each further 50, so `limit` is what moves both the clock and the price.",
+    "description": "The tool to reach for whenever someone asks what to do, where to go, what is on, or wants a day or an evening planned.\n\nSend what they said, in their words, and with it what you know about this person that would change the answer — who they are, what they have liked, disliked or already done — chosen for this ask, not attached as a profile: a detail that does not bear on it pulls the answer toward itself. One call. We read everything on in that window and that area — a thousand rows and more — and return the ones that fit, in order, each with a sentence saying why it is there.\n\nDO NOT split the request into searches, and do not re-rank or filter what comes back. The ordering is the answer: it was made by reading every candidate against this person's actual request, which is work no selection from a results list can redo. Show them in the order given.\n\nKeyword searches miss the local life — a Go night at a cafe, a running club, an origami meetup, a free park tour — because\nnone of it describes itself in the words anyone would search for. Reading every row is how those are found.\n\nNew York and the San Francisco Bay Area only for now. If they have not said which city, ask them first; an ask with no place is answered with that question.\n\nWith reasons: 3-6 credits per ask, 8-12 seconds for a screenful (the first 50 results). Without reasons: 2-3 credits per ask, 3-6 seconds. Priced per call on the work it did, and 2 for each further 50, so `limit` is what moves both the clock and the price.",
     "parameters": {
       "type": "object",
       "properties": {
@@ -246,11 +247,11 @@ or it will be rejected. For Anthropic, rename `parameters` to
         "place": {
           "type": "string",
           "maxLength": 120,
-          "description": "A neighbourhood, borough or landmark, when you want to be certain of it rather than leave it to the sentence. Beats any place named in `request`."
+          "description": "A place they named — neighbourhood, borough, city, landmark or address — when you hold it exactly. Say where ONE way: this, or the place in `request`, or `lat`/`lng`. Two ways that name different places are not searched; the answer asks which one."
         },
         "lat": {
           "type": "number",
-          "description": "Their position, if you have it. Send both `lat` and `lng`; either alone is ignored. Beats `place`."
+          "description": "Their position, for \"near me\" / \"around here\". Send both `lat` and `lng`; either alone is ignored. Only when they want to search around where they are: then name no place in `request` or `place`. A position and a different named place are not searched; the answer asks which one."
         },
         "lng": {
           "type": "number",
