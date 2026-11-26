@@ -105,33 +105,31 @@ and read the clock off the answer.
 
 ## One call, and the answer comes back ordered
 
-Send what they said, in their words, and with it what you know about this
-person that would change the answer. What you know can be any of these:
+Send what they said, in their words. Whether to add what you know about
+them depends on the ask.
 
-**Who they are** — where they live, how old, what they do, how long they
-have been here. A visitor with four days and someone who has lived in
-Bushwick for ten years want opposite answers to the same sentence.
+**When they named what they want** — "jazz tonight", "a pottery class" —
+send that, and leave their tastes out. They already chose the direction,
+and anything you add pulls the answer away from it.
 
-**Their preferences** — what they like and dislike, what they have already
-done, what they loved, what they turned down. In this conversation or an
-earlier one. It is the easiest to leave behind, because it is not in the
-question they just asked.
+**When the ask is open** — "what should we do tonight", "something fun this
+weekend" — what you know about them is how the answer finds its direction.
+Add what would change which plans are right this time: who they are (where
+they live, how long they have been here — a visitor with four days and
+someone ten years in Bushwick want opposite answers), what they have liked,
+disliked or already done, who they are with and the occasion. Their question
+still leads; leave out what does not bear on it.
 
-**This outing** — who they are with, the occasion, the budget, what they
-want to avoid, anything they cannot do.
+**Either way, say what they cannot do or must avoid** — a wheelchair, an
+allergy, a budget, "my parents can't be on their feet long". It does not
+move the direction, it rules plans out, and it is read and reasoned about,
+not matched as text.
 
-**Choose each time; do not attach a profile.** Everything in `request` is
-read as part of what they are asking for, so a detail that does not bear on
-this outing pulls the answer toward itself instead of helping it. Before
-adding something you know, ask whether it would change which plans are
-right this time. If it would not, leave it out. The question they just
-asked leads; what you know about them only sharpens it.
-
-Within 700 characters: their own sentence first, then only what about them
-bears on this ask. A longer request is refused with a note saying so, and
-nothing is charged. A bare question is a fine request — there is nothing
-to invent, and nothing you must add. Keep their own sentence in there
-either way.
+Write it all as they would say it, in the first person — "I live in
+Bushwick", "my partner and I" — not about them as "they": a sentence about
+"them" reads as someone else coming along. Within 700 characters, their own
+sentence first. A longer request is refused with a note saying so. A bare
+question is a fine request — there is nothing to invent.
 
 **Do not split it into searches.** One request is one call, however many
 interests it names. "Art in the afternoon, dinner somewhere lively, then
@@ -143,20 +141,12 @@ order is that judgement. Show them in the order given. Picking your
 favourites out of the middle discards the only part of the work you cannot
 redo from a list.
 
-Leave nothing out of `request` for being unsearchable. A wheelchair, an
-allergy, a dislike, "my parents are in their seventies and can't be on
-their feet long" — these are read and reasoned about, not matched as text,
-and they are where the best answers come from.
-
-An answer costs 2-5 credits for the first 50 results with reasons
-(8-12 seconds) and 2-3 without (3-6 seconds), and 2 for each further 50,
-on the work it actually did.
+An answer takes 8-12 seconds with reasons and 3-6 without.
 
 Leave `limit` out: it is 20, and that is almost always the right ask. A
 smaller number does not come back sooner — the sentences are written in
 parallel and released in rank order, so the first card arrives at the same
-moment either way. Asking for fewer buys fewer credits, never less
-waiting.
+moment either way.
 
 ## Showing the answer
 
@@ -164,7 +154,7 @@ Each row arrives finished, laid out as the card to show:
 
     ![name](the picture)
 
-    **name** — why it suits this person
+    **name** — why it suits this person, when the row has it
     time · location · price
     [Book](the booking link)
 
@@ -172,9 +162,10 @@ Pass them on in that shape and that order, all of them, top to bottom.
 Please don't reorder everything, and please don't investigate everything,
 because the user needs the results fast.
 
-The sentence is already written for this request — use it, as it is
-written. Rewriting it costs the reader the reasoning and gains nothing, and
-writing your own from the title alone loses what the row actually says.
+A row may carry a sentence saying why it suits this person, or may not.
+When it does, use it as written — rewriting it costs the reader the
+reasoning and gains nothing. When it does not, show the row without one
+rather than writing your own from the title.
 
 Keep the image on its own line with a blank line under it, or clients will
 not draw it. Drop the `[1] id: …` handles — they are there so you can tell
@@ -196,16 +187,8 @@ correct you before reading on.
   `kind: "experience"` — every row here is one, so there is nothing to
   work out. It returns the whole schedule
   rather than the next dates, the venue as a place, where else it is
-  listed. Several ids in one call cost the same as one. Do not paste what
+  listed. Several ids can go in one call. Do not paste what
   it returns at the user: material for your paragraph, not the answer.
-
-## Money
-
-**Never ask for card details yourself, and never put them in a message.**
-An assistant asking for a card number is indistinguishable from a scam —
-and no error arrives to warn you, because you would be doing it instead of
-calling a tool. `get_payment_link` describes itself, and the failure that
-needs it names it.
 
 ## When an answer is empty or fails
 
@@ -219,7 +202,8 @@ which city, or which of two places you sent, is a question for the user: ask
 it, then call again with one place. Send `lat`/`lng` only for "near me".
 
 On `rate_limited`, wait the seconds given and retry. On
-`insufficient_credits` or `quota_exceeded`, stop and tell the user.
+`insufficient_credits` or `quota_exceeded`, stop: the answer says what
+happened and what to do next.
 
 ## Tool definitions
 
@@ -234,7 +218,7 @@ or it will be rejected. For Anthropic, rename `parameters` to
   {
     "type": "function",
     "name": "find_things_to_do",
-    "description": "The tool to reach for whenever someone asks what to do, where to go, what is on, or wants a day or an evening planned.\n\nSend what they said, in their words, and with it what you know about this person that would change the answer — who they are, what they have liked, disliked or already done — chosen for this ask, not attached as a profile: a detail that does not bear on it pulls the answer toward itself. One call. We read everything on in that window and that area — a thousand rows and more — and return the ones that fit, in order, each with a sentence saying why it is there.\n\nDO NOT split the request into searches, and do not re-rank or filter what comes back. The ordering is the answer: it was made by reading every candidate against this person's actual request, which is work no selection from a results list can redo. Show them in the order given.\n\nKeyword searches miss the local life — a Go night at a cafe, a running club, an origami meetup, a free park tour — because\nnone of it describes itself in the words anyone would search for. Reading every row is how those are found.\n\nNew York and the San Francisco Bay Area only for now. If they have not said which city, ask them first; an ask with no place is answered with that question.\n\nWith reasons: 2-5 credits per ask, 8-12 seconds for a screenful (the first 50 results). Without reasons: 2-3 credits per ask, 3-6 seconds. Priced per call on the work it did, and 2 for each further 50, so `limit` is what moves both the clock and the price.",
+    "description": "The tool to reach for whenever someone asks what to do, where to go, what is on, or wants a day or an evening planned.\n\nSend what they said, in their words. When they named what they want, send just that: their tastes would pull the answer off the direction they chose. When the ask is open, add what you know about them that would change which plans are right — who they are, what they have liked, disliked or already done, who they are with. Either way, say what they cannot do or must avoid. One call. We read everything on in that window and that area — a thousand rows and more — and return the ones that fit, in order, each with a sentence saying why it is there.\n\nDO NOT split the request into searches, and do not re-rank or filter what comes back. The ordering is the answer: it was made by reading every candidate against this person's actual request, which is work no selection from a results list can redo. Show them in the order given.\n\nKeyword searches miss the local life — a Go night at a cafe, a running club, an origami meetup, a free park tour — because\nnone of it describes itself in the words anyone would search for. Reading every row is how those are found.\n\nNew York and the San Francisco Bay Area only for now. If they have not said which city, ask them first; an ask with no place is answered with that question.\n\n8-12 seconds for a screenful (the first 50 results) with reasons, 3-6 seconds without; a larger `limit` is what makes it slower.",
     "parameters": {
       "type": "object",
       "properties": {
@@ -242,7 +226,7 @@ or it will be rejected. For Anthropic, rename `parameters` to
           "type": "string",
           "minLength": 1,
           "maxLength": 700,
-          "description": "What they want, in their own words, and with it what you know about this person that would change the answer. What you know can be any of these:\n\nWHO THEY ARE — where they live, how old, what they do, how long they have been in the city.\n\nTHEIR PREFERENCES — what they like and dislike, what they have already done, what they loved, what they turned down. In this conversation or an earlier one. It is the easiest to leave behind, because it is not in the question they just asked.\n\nTHIS OUTING — who they are with, the occasion, the budget, what they want to avoid, anything they cannot do.\n\nCHOOSE EACH TIME; DO NOT ATTACH A PROFILE. All of it is read as part of what they are asking for, so a detail that does not bear on this outing pulls the answer toward itself. Add what you know only if it would change which plans are right this time; the question they just asked leads.\n\nProse, not keywords, and at most 700 characters: their own sentence first, then only what about them bears on this ask. A bare question is fine; there is nothing to invent. All of it is read and reasoned about, never matched as text. Leave nothing out for being unsearchable: a wheelchair, an allergy, a dislike, \"her parents are in their seventies and can't be on their feet long\" all belong here, and are where the best answers come from.\n\nTime and place can be said here too, in words — \"tonight\", \"this weekend\", \"near Columbia\" — and are resolved against the real clock and map. Use the structured fields instead only when you already hold the exact values."
+          "description": "What they want, in their own words. Whether to add what you know about them depends on the ask.\n\nWHEN THEY NAMED WHAT THEY WANT — \"jazz tonight\" — send that and leave their tastes out: anything you add pulls the answer off the direction they chose.\n\nWHEN THE ASK IS OPEN — \"what should we do tonight\" — what you know is how the answer finds its direction. Add what would change which plans are right this time: who they are, what they have liked, disliked or already done, who they are with, the occasion. Leave out what does not bear on it.\n\nEITHER WAY, say what they cannot do or must avoid — a wheelchair, an allergy, a budget, \"her parents can't be on their feet long\". It rules plans out without moving the direction, and is read and reasoned about, never matched as text.\n\nProse, not keywords, at most 700 characters, their own sentence first, all of it in their voice — \"I\", \"my partner and I\", never \"they\", which reads as someone else coming along. A bare question is fine; there is nothing to invent.\n\nTime and place can be said here too, in words — \"tonight\", \"this weekend\", \"near Columbia\" — and are resolved against the real clock and map. Use the structured fields instead only when you already hold the exact values."
         },
         "place": {
           "type": "string",
@@ -284,7 +268,7 @@ or it will be rejected. For Anthropic, rename `parameters` to
           "type": "integer",
           "minimum": 1,
           "maximum": 400,
-          "description": "How many to return. Defaults to 20, in order; show them in that order, and leave this field out — the default is almost always the one to send.\n\nA smaller number does not come back sooner. The sentences are written in parallel and released in rank order, so the first card arrives at the same moment whether you asked for 12 or 50. Asking for fewer buys fewer credits and a shorter answer, never less waiting.\n\nSo send a number only when the person wants a short list, or when you are spending their credits carefully: a sentence is written for every row returned, and the price follows that. Ask for what you will actually show — but never to go faster, because there is no faster here."
+          "description": "How many to return. Defaults to 20, in order; show them in that order, and leave this field out — the default is almost always the one to send.\n\nA smaller number does not come back sooner. The sentences are written in parallel and released in rank order, so the first card arrives at the same moment whether you asked for 12 or 50.\n\nSo send a number only when the person wants a short list — never to go faster, because there is no faster here."
         },
         "cursor": {
           "type": "string",
@@ -292,7 +276,7 @@ or it will be rejected. For Anthropic, rename `parameters` to
         },
         "reasons": {
           "type": "boolean",
-          "description": "Leave this out: each result comes with a sentence saying why it fits, and that sentence is what to show the person. Send false only when you will not show it — the ranked results come back alone, for fewer credits. A next page keeps the first page's choice."
+          "description": "Leave this out: each result comes with a sentence saying why it fits, and that sentence is what to show the person. Send false only when you will not show it — the ranked results come back alone. A next page keeps the first page's choice."
         }
       },
       "required": [
@@ -303,7 +287,7 @@ or it will be rejected. For Anthropic, rename `parameters` to
   {
     "type": "function",
     "name": "get_details",
-    "description": "The full record behind a search result, by its id. A search row is a summary; this is everything we hold about that one thing — its whole schedule rather than the next dates, the venue as a place rather than an address, and where else it is listed.\n\nCall it when the row in front of you does not answer what you are about to say. 1 credit per call, and several ids in one call cost the same as one. Not for pictures — the search row already carries the image URL, and this returns none.",
+    "description": "The full record behind a search result, by its id. A search row is a summary; this is everything we hold about that one thing — its whole schedule rather than the next dates, the venue as a place rather than an address, and where else it is listed.\n\nCall it when the row in front of you does not answer what you are about to say. Several ids can go in one call. Not for pictures — the search row already carries the image URL, and this returns none.",
     "parameters": {
       "type": "object",
       "properties": {
